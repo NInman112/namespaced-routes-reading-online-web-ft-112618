@@ -4,8 +4,11 @@ Rails.application.routes.draw do
   end
 
   resources :posts, only: %i[index show new create edit update]
+  
+  scope '/admin' do 
+    resources :stats, only[:index]
 
-  get '/admin/stats', to: 'stats#index'
-
+  end 
+  
   root 'posts#index'
 end
